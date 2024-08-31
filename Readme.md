@@ -30,7 +30,8 @@ pip install -r requirements.txt
         SPEECH_SERVICE_API_KEY=0d5b9a------------------
         GOOGLE_GEMINI_API_KEY=AIza---------------------
     ```
-    4. Save and close the file.
+    4. Make sure to replace the placeholders with the right api keys.
+    5. Save and close the file.
 6. Run the main app that has all the navigation to various steps to convert a ppt to a video in order:
 ```
 streamlit run app.py
