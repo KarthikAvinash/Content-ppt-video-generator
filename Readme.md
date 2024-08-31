@@ -1,5 +1,5 @@
 # Content to PPT-Video Generator
-## Setup Instructions
+## Setup Instructions for Windows
 
 1. Clone the repo:
 ```
