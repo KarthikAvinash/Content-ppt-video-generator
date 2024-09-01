@@ -1,8 +1,8 @@
 import streamlit as st
 import os
 import shutil
-from ppt_util_functions import *
-from video_util_functions import *
+from utils.ppt_util_functions import *
+from utils.video_util_functions import *
 from PIL import Image
 from moviepy.editor import ImageClip, concatenate_videoclips
 import zipfile

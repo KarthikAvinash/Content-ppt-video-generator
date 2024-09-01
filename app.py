@@ -1,9 +1,9 @@
 import streamlit as st
-from get_audio import get_audio
-from get_ppt import get_ppt
-from pdf_conversion import convert_to_pdf
-from get_avatar import get_avatar
-from get_overlay import get_fin_video
+from utils.get_audio import get_audio
+from utils.get_ppt import get_ppt
+from utils.pdf_conversion import convert_to_pdf
+from utils.get_avatar import get_avatar
+from utils.get_overlay import get_fin_video
 st.set_page_config(page_title="PowerPoint Updater", layout="wide")
 
 # Sidebar navigation

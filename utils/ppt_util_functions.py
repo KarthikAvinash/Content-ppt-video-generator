@@ -16,6 +16,7 @@ from pptx.util import Pt
 
 if not load_dotenv('./.env'): raise Exception("env file not found")
 GEMINI_API_KEY = os.getenv("GOOGLE_GEMINI_API_KEY")
+UNSPLASH_API_KEY = os.getenv("UNSPLASH_API")
 genai.configure(api_key=GEMINI_API_KEY)
 MODEL = "gemini-1.5-flash-latest"
 # MODEL = "gemini-1.5-pro-latest"

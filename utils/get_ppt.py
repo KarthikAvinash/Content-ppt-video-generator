@@ -2,8 +2,8 @@ import streamlit as st
 import os
 from pptx import Presentation
 import json
-from ppt_util_functions import *
-from video_util_functions import *
+from utils.ppt_util_functions import *
+from utils.video_util_functions import *
 import io
 from PIL import Image
 import tempfile
