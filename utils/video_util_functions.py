@@ -81,10 +81,10 @@ def delete_folder_and_create(path):
     if os.path.exists(path): shutil.rmtree(path)
     os.makedirs(path)
 
-def convert_to_images(input_file_path):
+def convert_to_images(pdf_file_path, images_dir = "images"):
     if os.path.exists(images_dir): shutil.rmtree(images_dir)
     os.makedirs(images_dir)
-    pdf_document = fitz.open(input_file_path)
+    pdf_document = fitz.open(pdf_file_path)
     num_pages = len(pdf_document)
     num_digits = len(str(num_pages))
     for page_num in range(num_pages):
@@ -92,8 +92,8 @@ def convert_to_images(input_file_path):
         page = pdf_document.load_page(page_num)
         pix = page.get_pixmap()
         img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
-        img_path = f"{images_dir}/page_{page_number_str}.png"
-        image_names.append(f"page_{page_number_str}")
+        img_path = f"{images_dir}/slide{page_num+1:03}.png"
+        image_names.append(f"slide{page_num+1:03}")
         img.save(img_path)
         print(f"Saved {img_path}")
 

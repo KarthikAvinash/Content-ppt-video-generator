@@ -44,7 +44,6 @@ def get_sorted_images(directory):
     image_files = [f for f in os.listdir(directory) if os.path.splitext(f.lower())[1] in image_extensions]
     return sorted(image_files)
 
-
 def save_pptx_copy(original_path, new_path):
     """
     Reads a PowerPoint (.pptx) file and saves a copy with a different name.
@@ -63,7 +62,6 @@ def save_pptx_copy(original_path, new_path):
         print(f"Presentation saved successfully to {new_path}")
     except Exception as e:
         print(f"Failed to save presentation: {e}")
-
 
 def get_ppt():
     st.title("PowerPoint Template Updater")

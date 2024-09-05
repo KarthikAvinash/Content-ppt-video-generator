@@ -69,7 +69,7 @@ def get_audio():
 
             # Convert PDF to images
             status_text.text("Converting PDF to images...")
-            convert_to_images(pdf_path)
+            convert_to_images(pdf_file_path=pdf_path, images_dir=images_dir)
             slides_content = get_slides_content()
             sent_slide_content = get_sentence_wise_slide_content(slides_content)
 
