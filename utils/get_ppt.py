@@ -11,9 +11,9 @@ from pptxtopdf import convert
 # New imports
 from pptx.enum.shapes import MSO_SHAPE_TYPE
 from io import BytesIO
-
 import re
-
+import json
+import os
 
 image_dir = "images"
 
@@ -101,13 +101,12 @@ def parse_response_file_to_get_num_instructions(filepath):
 
 
 INSTRUCTIONS_FILE = "instructions.txt"
-
+RESPONSE_FILE = 'response.txt'
 def save_instructions(instructions):
     """Save instructions to the text file."""
     with open(INSTRUCTIONS_FILE, "w") as f:
         f.write("\n".join(instructions))
-import json
-import os
+
 
 JSON_FILE = "instruction_count.json"
 
@@ -127,6 +126,29 @@ def load_json(filename=JSON_FILE):
     else:
         print(f"No file found at {filename}, returning empty dictionary.")
         return {}
+
+
+import requests
+from bs4 import BeautifulSoup as bs
+
+def fetch_image_url(query):
+    """Fetch the URL of an image based on the search query."""
+    params = {
+        "q": query,  # Search query
+        "tbm": "isch",  # Image results
+    }
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    }
+    try:
+        html = requests.get("https://www.google.com/search", params=params, headers=headers, timeout=30)
+        soup = bs(html.content, "html.parser")
+        images = soup.select('div img')
+        if images and 'src' in images[1].attrs:
+            return images[1]['src']
+    except Exception as e:
+        print(f"Error fetching image URL: {e}")
+    return ""
 
 #_____________________________
 
@@ -197,12 +219,12 @@ def get_ppt():
 
             # Step 4: Update presentation
             status_text.text("Updating presentation...")
-            instructions = parse_response_file('response.txt')
-            instruction_count = parse_response_file_to_get_num_instructions('response.txt')  # E.g., {'1': 3, '2': 11, '3': 9}
+            instructions = parse_response_file(RESPONSE_FILE)
+            instruction_count = parse_response_file_to_get_num_instructions(RESPONSE_FILE)  # E.g., {'1': 3, '2': 11, '3': 9}
             save_instructions(instructions)
             save_json(instruction_count)
 
-# shifted to edit_instructions.py...
+# copied to edit_instructions.py as well.
 
             update_presentation_with_instructions(ppt_path, instructions, 'updated_presentation.pptx')
             instructions = remove_image_placeholder(instructions)

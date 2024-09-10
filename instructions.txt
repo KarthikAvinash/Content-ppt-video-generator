@@ -1,23 +1,23 @@
-Meta introduces Llama 3, the next generation of its open-source large language model (LLM). This release features pretrained and instruction-fine-tuned models with 8B and 70B parameters, demonstrating state-of-the-art performance across benchmarks.  Llama 3 is available on various platforms, including AWS, Databricks, Google Cloud, and Hugging Face, with support from AMD, AWS, Dell, Intel, NVIDIA, and Qualcomm. Meta emphasizes responsible development and deployment, offering tools like Llama Guard 2, Code Shield, and CyberSec Eval 2 for safety. Future plans include introducing new capabilities, longer context windows, additional model sizes, and enhanced performance.
-Introducing Meta Llama 3: The Most Capable Openly Available LLM to Date by Karthik Avinash
-Large Language Model (in short LLM)
-Key Goals for Llama 3
-Striving for Excellence and Responsibility
-Build the Best Open Models
-Meta aimed to develop Llama 3 models that rival the best proprietary LLMs in performance and helpfulness. The company embraced an open-source philosophy, releasing models early and often for community feedback.  The initial text-based models are just the start, with future plans to introduce multilingual and multimodal capabilities, longer context windows, and improved overall performance.
-[Image of Llama 3 Model]
-Address Developer Feedback
-Meta actively sought feedback from developers to enhance Llama 3's usefulness.  The company also prioritizes responsible use, playing a leading role in promoting ethical LLM development and deployment.
-Embrace Open Source Ethos
-Meta believes in releasing early and often to empower the community and accelerate innovation. This approach allows developers to access models during development and contribute to their evolution. The company is committed to fostering an open ecosystem where collaboration thrives.
-Future Plans for Llama 3
-Meta envisions a future where Llama 3 becomes multilingual and multimodal, capable of understanding and responding to multiple languages and formats.  The company aims to extend its context window, allowing the model to process and analyze larger amounts of information.  Continuous performance improvements are planned across core LLM capabilities like reasoning and coding, pushing the boundaries of AI.
-State-of-the-Art Performance
-Pushing the Boundaries of Language Modeling
-Improved Pretraining & Post-training
-Llama 3's 8B and 70B parameter models surpass Llama 2, achieving a new standard in LLM performance. Advanced pretraining and post-training techniques have yielded significant improvements, leading to the best available models at those scales. False refusal rates have been reduced, alignment enhanced, and response diversity increased.  Enhanced capabilities, including reasoning, code generation, and instruction following, make Llama 3 more steerable and responsive.
-Human Evaluation Benchmark
-Meta created a high-quality human evaluation set encompassing 12 key use cases, including coding, writing, and reasoning. The 70B instruction-following model outperforms Claude Sonnet, Mistral Medium, and GPT-3.5 in real-world scenarios, as assessed by human annotators.  The pretrained model also sets a new benchmark for LLMs at its scale.
-Performance in Real-World Scenarios
-Llama 3 was evaluated not just on standard benchmarks but also for real-world performance. The evaluation set was carefully curated to assess the model's ability to handle diverse prompts and tasks.  Human evaluators consistently favored the 70B instruction-following model over competitors, showcasing its strength in practical scenarios.
-[Chart depicting Llama 3's performance compared to other LLMs]
+Meta Llama 3 is the next generation of our state-of-the-art open source large language model. It's available on various platforms including AWS, Databricks, Google Cloud, Hugging Face, Kaggle, IBM WatsonX, Microsoft Azure, NVIDIA NIM, and Snowflake. We're dedicated to developing Llama 3 responsibly, and offering resources to help others do the same. This includes Llama Guard 2, Code Shield, and CyberSec Eval 2 for trust and safety. In the coming months, we expect new capabilities, longer context windows, additional model sizes, and enhanced performance. The Llama 3 research paper will also be released soon.
+Introducing Meta Llama 3: The Most Capable Openly Available LLM
+Large Language Models
+Introducing Meta Llama 3
+The Next Generation of Llama
+Llama 3 models are here!
+This release features pretrained and instruction-fine-tuned language models with 8B and 70B parameters, supporting a wide range of use cases. Llama 3 demonstrates state-of-the-art performance on various benchmarks and offers improved reasoning capabilities. We believe these are the best open source models of their class.
+[Image of Llama 3 models]
+Llama 3 is open source.
+We're putting Llama 3 in the hands of the community to kickstart the next wave of AI innovation across the stack—from applications to developer tools and more.
+Why Llama 3?
+We aimed to build the best open models, matching the quality of proprietary models. We addressed developer feedback to improve Llama 3's helpfulness, prioritizing responsible use and deployment. We're embracing open source ethos by releasing early and often, allowing the community access to models in development.
+What's next?
+We'll make Llama 3 multilingual and multimodal, enhance its context length, and continue improving overall performance, including reasoning and coding abilities. Our goal is to empower the community with the best possible tools for AI innovation.
+Llama 3 Performance
+State-of-the-Art Results Across Benchmarks
+Llama 3 is a major leap.
+Our 8B and 70B parameter Llama 3 models outperform Llama 2 and set a new standard for LLMs at those scales. Improvements in pretraining and post-training have made our pretrained and instruction-fine-tuned models the best at their respective sizes. These improvements have also led to reduced false refusal rates, enhanced alignment, and increased diversity in model responses.
+Human evaluations confirm.
+We've developed a new high-quality human evaluation set covering 12 key use cases. Our 70B instruction-following model consistently outperforms competing models of similar size in real-world scenarios. The chart below shows aggregated results of human evaluations against Claude Sonnet, Mistral Medium, and GPT-3.5, highlighting Llama 3's strength in real-world tasks.
+Focus on real-world use cases.
+We evaluated Llama 3 on standard benchmarks and developed a new high-quality human evaluation set, containing 1,800 prompts across 12 key use cases. This set helps assess real-world performance. For improved model safety, even our own modeling teams don't have access to this evaluation set, ensuring that Llama 3 isn't overfitting to it. The chart below shows human evaluation results for Llama 3 against comparable models.
+[Chart showing human evaluation results]

@@ -204,6 +204,30 @@ def fetch_and_save_image(query, width, height, save_dir, image_name, access_key)
         print("No images found.")
         return None
 
+import requests
+from bs4 import BeautifulSoup as bs
+def fetch_image_urls(query):
+    leaders_list = [query]
+    leaders_image=[]
+    for lead in leaders_list:
+        params = {
+                "q": lead, # search query
+                "tbm": "isch",                # image results
+            }
+        html = requests.get("https://www.google.com/search", params=params,  timeout=30)
+        #print(html.url)
+        html.text
+        # convert to beautiful soup 
+        soup = bs(html.content)
+        # beautify the code 
+        #print(soup.prettify()) 
+        images = soup.select('div img') 
+        #rint(images)
+        images_url = images[1]['src'] 
+        leaders_image.append(images_url)
+    return leaders_image[0]
+
+
 def replace_placeholders_with_text(presentation_path, output_path, instructions, access_key):
     # Load the PowerPoint presentation
     presentation = Presentation(presentation_path)
@@ -233,21 +257,35 @@ def replace_placeholders_with_text(presentation_path, output_path, instructions,
                             instr_idx += 1
 
                             if curr == "img":
-                                curr_width_pix = emus_to_pixels(width)
-                                curr_height_pix = emus_to_pixels(height)
-                                # Fetch and insert the image
-                                image_path = fetch_and_save_image(
-                                    query=new_text,
-                                    width=curr_width_pix,  # You can adjust the width and height as needed
-                                    height=curr_height_pix,
-                                    save_dir="online_images",
-                                    image_name=f"image_{instr_idx}",
-                                    access_key=access_key
-                                )
-                                if image_path:
-                                    # Replace shape with the image
-                                    shape.element.getparent().remove(shape.element)
-                                    slide.shapes.add_picture(image_path, left, top, width, height)  # Adjust size and position
+                                # curr_width_pix = emus_to_pixels(width)
+                                # curr_height_pix = emus_to_pixels(height)
+                                # # Fetch and insert the image
+                                # image_path = fetch_and_save_image(
+                                #     query=new_text,
+                                #     width=curr_width_pix,  # You can adjust the width and height as needed
+                                #     height=curr_height_pix,
+                                #     save_dir="online_images",
+                                #     image_name=f"image_{instr_idx}",
+                                #     access_key=access_key
+                                # )
+                                # if image_path:
+                                #     # Replace shape with the image
+                                #     shape.element.getparent().remove(shape.element)
+                                #     slide.shapes.add_picture(image_path, left, top, width, height)  # Adjust size and position
+                                # Fetch and insert image URL
+                                
+                                ## not using unsplash, instead using google images.
+                                print("new test@@@@@@2: ",new_text)
+                                image_url = fetch_image_urls(new_text)
+                                run = p.add_run()
+                                if image_url:
+                                    run.text = image_url
+                                    run.font.color.rgb = RGBColor(0, 0, 255)
+                                    run.font.underline = True
+                                else:
+                                    run.text = "Image not found"
+                                    run.font.color.rgb = RGBColor(255, 0, 0)
+                                
                             else:
                                 run = p.add_run()
                                 run.text = new_text
