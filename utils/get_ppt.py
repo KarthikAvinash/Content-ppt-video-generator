@@ -12,6 +12,9 @@ from pptxtopdf import convert
 from pptx.enum.shapes import MSO_SHAPE_TYPE
 from io import BytesIO
 
+import re
+
+
 image_dir = "images"
 
 # Function to save uploaded file
@@ -63,6 +66,73 @@ def save_pptx_copy(original_path, new_path):
     except Exception as e:
         print(f"Failed to save presentation: {e}")
 
+def parse_response_file_to_get_num_instructions(filepath):
+    instructions_count = {}
+    slide_num_pattern = re.compile(r'"Slide (\d+)": \[')  # Regex to capture Slide <number> pattern
+    instructions_pattern = re.compile(r'"instructions"')  # Pattern to identify 'instructions'
+
+    with open(filepath, 'r', encoding='ISO-8859-1') as file:
+        content = file.readlines()
+
+    current_slide = None
+    instruction_lines = 0
+
+    for line in content:
+        # Check for the start of a new slide
+        slide_match = slide_num_pattern.search(line)
+        if slide_match:
+            # Save the count for the previous slide if applicable
+            if current_slide is not None:
+                instructions_count[current_slide] = instruction_lines
+
+            # Reset for the new slide
+            current_slide = slide_match.group(1)
+            instruction_lines = 0  # Reset instruction count for the new slide
+
+        # Check if the line contains the word 'instructions'
+        if instructions_pattern.search(line):
+            instruction_lines += 1
+
+    # For the last slide after the loop ends
+    if current_slide is not None:
+        instructions_count[current_slide] = instruction_lines
+
+    return instructions_count
+
+
+INSTRUCTIONS_FILE = "instructions.txt"
+
+def save_instructions(instructions):
+    """Save instructions to the text file."""
+    with open(INSTRUCTIONS_FILE, "w") as f:
+        f.write("\n".join(instructions))
+import json
+import os
+
+JSON_FILE = "instruction_count.json"
+
+def save_json(data, filename=JSON_FILE):
+    """Saves a dictionary to a JSON file."""
+    with open(filename, 'w') as json_file:
+        json.dump(data, json_file, indent=4)
+    print(f"Data successfully saved to {filename}")
+
+def load_json(filename=JSON_FILE):
+    """Loads a dictionary from a JSON file."""
+    if os.path.exists(filename):
+        with open(filename, 'r') as json_file:
+            data = json.load(json_file)
+        print(f"Data successfully loaded from {filename}")
+        return data
+    else:
+        print(f"No file found at {filename}, returning empty dictionary.")
+        return {}
+
+#_____________________________
+
+ppt_dir = "ppts"
+ppt_path = os.path.join(ppt_dir, "template.pptx")
+
 def get_ppt():
     st.title("PowerPoint Template Updater")
 
@@ -75,9 +145,9 @@ def get_ppt():
 
     if template_file and content_file:
         # Save uploaded files
-        ppt_dir = "ppts"
+        
         os.makedirs(ppt_dir, exist_ok=True)
-        ppt_path = os.path.join(ppt_dir, "template.pptx")
+        
         content_path = "content.txt"
 
         save_uploaded_file(template_file, ppt_path)
@@ -114,6 +184,7 @@ def get_ppt():
             with open(prompt_file) as query_file:
                 query = query_file.read()
             
+
             fin_query = f"I need to create a presentation, and need assistance in filling the placeholders in the given template which is in the form of a json. You need to only fill the 'instructions' section in each one in each slide. And return that json content only, so that I can put it directly in a json file. The presentation is based on the following content: {content}\n\nand the template you need to fill using the given above content is as follows, make sure that the word limit is taken care and keep it as short as possible, and also the content in each slide must be linked, and all slides must be linked, and all content must be related to the given content. Write the points in short and precise. Also forget the image placeholders in this template: {query}"
             
             response = model.generate_content([fin_query], stream=True)
@@ -127,6 +198,12 @@ def get_ppt():
             # Step 4: Update presentation
             status_text.text("Updating presentation...")
             instructions = parse_response_file('response.txt')
+            instruction_count = parse_response_file_to_get_num_instructions('response.txt')  # E.g., {'1': 3, '2': 11, '3': 9}
+            save_instructions(instructions)
+            save_json(instruction_count)
+
+# shifted to edit_instructions.py...
+
             update_presentation_with_instructions(ppt_path, instructions, 'updated_presentation.pptx')
             instructions = remove_image_placeholder(instructions)
 
