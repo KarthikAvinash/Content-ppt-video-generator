@@ -1,23 +1,23 @@
-Introducing Meta Llama 3, the most capable openly available LLM to date. This next-generation language model offers significant advancements over previous versions, including improved reasoning capabilities and performance across a wide range of benchmarks. Available across major platforms, Llama 3 is poised to empower developers and drive innovation in the field of AI.
-The Future of Open Source LLMs
-Meta Llama 3
-Key Highlights
-State-of-the-art Performance
-Llama 3 surpasses its predecessor, Llama 2, establishing a new benchmark for LLMs at its scale.
-Extensive training on a massive dataset, combined with innovative post-training techniques, resulted in significantly enhanced model capabilities, including reasoning, code generation, and instruction following.
-[Image showing performance comparison]
-Open Source Approach
-Meta's commitment to open source principles has made Llama 3 accessible to a broader community of developers, fostering innovation and collaboration in the field.
-Availability & Platforms
-Llama 3 is readily available on leading cloud platforms, model API providers, and other key infrastructure, ensuring its accessibility and widespread adoption.
-Responsible AI Development
-Meta prioritizes responsible AI development, implementing robust safeguards and guidelines to mitigate potential risks associated with LLM usage. Tools like Llama Guard 2 and Code Shield enhance safety and ensure ethical deployment.
-Behind the Breakthrough
-Training & Architecture
-Model Architecture
-Llama 3 leverages a decoder-only transformer architecture with key improvements, including a larger vocabulary tokenizer for efficient language encoding and grouped query attention (GQA) for enhanced inference efficiency.
+Introducing Meta Llama 3: The Most Capable Openly Available LLM to Date\n\nMeta Llama 3 is the next generation of our state-of-the-art open source large language model. It is now available on major cloud platforms and hardware platforms.\n\nWe are dedicated to developing Llama 3 responsibly and are introducing new trust and safety tools to help others use it responsibly as well. These tools include Llama Guard 2, Code Shield, and CyberSec Eval 2.\n\nIn the coming months, we expect to introduce new capabilities, longer context windows, additional model sizes, and enhanced performance, and we’ll share the Llama 3 research paper. 
+Llama 3:  A New Era of Open LLMs
+Llama 3 Architecture
+Llama 3:  The Evolution
+Building upon Llama 2
+Llama 3 builds upon the success of Llama 2, addressing developer feedback and enhancing its capabilities.
+Key improvements include: \n\n  Increased helpfulness:  Llama 3 aims to be even more helpful and responsive to user queries.\n  State-of-the-art performance: Llama 3 sets a new benchmark for LLMs at its size.\n  Responsible use: Meta prioritizes responsible development and deployment of Llama 3. 
+[Image of Llama 3 architecture]
+Llama 3:  A Community Effort
+Meta believes in an open approach to AI development.  Llama 3 is released under an open license, encouraging innovation and collaboration.
+Llama 3 Goals
+Meta's goals for Llama 3 are:\n\n  Build the best open LLMs:  To rival proprietary models in performance and capability.\n  Address developer feedback: To improve the overall helpfulness and usability of Llama 3.\n  Lead in responsible AI: To promote the ethical and safe use of LLMs. 
+Future of Llama 3
+Meta plans to expand Llama 3 in the future by adding:\n\n  Multilingual support\n  Multimodal capabilities\n  Longer context windows\n  Continual performance improvements  
+Llama 3 Architecture
+Key Design Components
+Decoder-Only Transformer Architecture
+Llama 3 utilizes a standard decoder-only transformer architecture with key improvements: \n\n  Larger Vocabulary: A 128K token vocabulary for more efficient language encoding.\n  Grouped Query Attention (GQA): Enhances inference efficiency across 8B and 70B models.\n  Longer Sequence Length: Trained on 8,192 tokens, enabling processing of larger inputs.
 Training Data
-The model was trained on an extensive dataset of over 15T tokens, encompassing a diverse range of publicly available sources, including a significant amount of code. This vast dataset, combined with rigorous data filtering and curation processes, ensures high-quality training data.
-Scaling Up Training
-Meta's commitment to scaling up training involved employing advanced parallelization techniques, resulting in significant improvements in training efficiency and compute utilization. These optimizations allowed for the training of larger models with greater accuracy and performance.
-[Image illustrating training infrastructure]
+Llama 3 is trained on a massive dataset of 15T tokens. This data includes:\n\n  Publicly Available Sources:  Diverse range of text and code.\n  Multilingual Data: Over 30 languages are included, supporting future multilingual use cases.\n  Rigorous Data Filtering:  Multiple pipelines ensure high-quality data.
+Scaling Up Pretraining
+To optimize training, Meta developed scaling laws to guide the training process. This included:\n\n  Data Mix Optimization: Selecting the best data mix for various use cases.\n  Efficient Compute Utilization:  Maximizing GPU uptime and reducing training time.\n  Predicting Performance:  Evaluating model performance on key tasks before training.
+[Image of a training cluster]

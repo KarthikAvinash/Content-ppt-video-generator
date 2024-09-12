@@ -175,6 +175,14 @@ def get_ppt():
         save_uploaded_file(template_file, ppt_path)
         save_uploaded_file(content_file, content_path)
 
+        # Textbox for user to specify the topic
+        user_topic = st.text_input("Enter the topic you want to create the presentation on: (Type 'NA' if you do not have any specific topic and wish to use the whole content file for ppt generation)")
+        add_to_prompt = ""
+        if user_topic:
+            st.write(f"Topic entered: {user_topic}")
+            print(f"Topic entered by user: {user_topic}")
+            add_to_prompt = " and this is request on which the ppt is to be made - "+user_topic + "."
+
         # Process files
         if st.button("Process Files"):
             progress_bar = st.progress(0)
@@ -207,7 +215,7 @@ def get_ppt():
                 query = query_file.read()
             
 
-            fin_query = f"I need to create a presentation, and need assistance in filling the placeholders in the given template which is in the form of a json. You need to only fill the 'instructions' section in each one in each slide. And return that json content only, so that I can put it directly in a json file. The presentation is based on the following content: {content}\n\nand the template you need to fill using the given above content is as follows, make sure that the word limit is taken care and keep it as short as possible, and also the content in each slide must be linked, and all slides must be linked, and all content must be related to the given content. Write the points in short and precise. Also forget the image placeholders in this template: {query}"
+            fin_query = f"I need to create a presentation {add_to_prompt}. I need assistance in filling the placeholders in the given template which is in the form of a json. You need to only fill the 'instructions' section in each one in each slide. And return that json content only, so that I can put it directly in a json file. The presentation is based on the following content: {content}\n\nand the template you need to fill using the given above content is as follows, make sure that the word limit is taken care and keep it as short as possible, and also the content in each slide must be linked, and all slides must be linked, and all content must be related to the given content. Write the points in short and precise. Also forget the image placeholders in this template: {query}"
             
             response = model.generate_content([fin_query], stream=True)
             response.resolve()
