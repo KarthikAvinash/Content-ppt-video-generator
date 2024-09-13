@@ -3,7 +3,7 @@
 
 1. Clone the repo:
 ```
-git clone https://github.com/KarthikAvinash/demo.git
+git clone https://github.com/KarthikAvinash/Content-ppt-video-generator.git
 ```
 
 2. Create a virtual environment using the following command:
