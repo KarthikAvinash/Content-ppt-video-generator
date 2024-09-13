@@ -84,25 +84,25 @@ def create_prompt(slide_info):
             # }
         }
         if placeholder == 'img':
-            prompt_entry["estimated words"] = f"5"
+            prompt_entry["estimated words"] = f"5 (do not exceed this word limit)"
             prompt_entry['instructions'] = "[Write Image Here]"
         elif placeholder == 'title':
             font_path = r'fonts/Arial_Bold.ttf'
             font_size = 24
-            estimated_words = f"5"
+            estimated_words = f"5 (do not exceed this word limit)"
             prompt_entry["estimated words"] = estimated_words
             prompt_entry['instructions'] = f"[Write Title Here]"
         elif placeholder == 'txt':
             font_path = r'fonts/Arial.ttf'
             font_size = 12
-            estimated_words = estimate_word_count(width, height, font_path, font_size)
-            prompt_entry["estimated words"] = f"{estimated_words}"
-            # prompt_entry["estimated words"] = f"15"
+            # estimated_words = estimate_word_count(width, height, font_path, font_size)
+            # prompt_entry["estimated words"] = f"{estimated_words}"
+            prompt_entry["estimated words"] = f"15 (do not exceed this word limit)"
             prompt_entry['instructions'] = f"[Write Text Here]"
         elif placeholder=="stitle":
             font_path = r'fonts/Arial.ttf'
             font_size = 12
-            estimated_words = f"5"
+            estimated_words = f"5 (do not exceed this word limit)"
             prompt_entry["estimated words"] = estimated_words
             prompt_entry['instructions'] = f"[Write Sub-Title Here]"
         prompts.append(prompt_entry)
