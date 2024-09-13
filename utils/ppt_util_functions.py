@@ -35,7 +35,7 @@ def get_text_dimensions(text, font):
 
 def estimate_word_count(width_px, height_px, font_path, font_size):
     font = ImageFont.truetype(font_path, font_size)
-    sample_text = "The quick brown fox jumps over the lazy dog"
+    sample_text = "The quick brown fox jumps"
     text_width, text_height = get_text_dimensions(sample_text, font)
     chars_per_line = width_px / text_width
     lines_per_box = height_px / text_height
@@ -229,56 +229,112 @@ def fetch_image_urls(query):
     return leaders_image[0]
 
 
+# def replace_placeholders_with_text(presentation_path, output_path, instructions, access_key):
+#     # Load the PowerPoint presentation
+#     presentation = Presentation(presentation_path)
+#     instr_idx = 0
+
+#     # Iterate over each slide in the presentation
+#     for slide in presentation.slides:
+#         # Iterate over each shape in the slide
+#         for shape in slide.shapes:
+#             if shape.has_text_frame:
+#                 text_frame = shape.text_frame
+#                 left = shape.left
+#                 top = shape.top
+#                 width = shape.width
+#                 height = shape.height
+#                 # print("width: ", width,"; height: ", height)
+
+#                 for paragraph in text_frame.paragraphs:
+#                     curr = paragraph.text.strip()
+#                     if curr in ['img', 'title', 'txt', 'stitle']:
+#                         # Clear existing text
+#                         p = paragraph
+#                         p.clear()
+
+#                         if instr_idx < len(instructions):
+#                             new_text = instructions[instr_idx].strip('"')
+#                             instr_idx += 1
+
+#                             if curr == "img":
+#                                 # curr_width_pix = emus_to_pixels(width)
+#                                 # curr_height_pix = emus_to_pixels(height)
+#                                 # # Fetch and insert the image
+#                                 # image_path = fetch_and_save_image(
+#                                 #     query=new_text,
+#                                 #     width=curr_width_pix,  # You can adjust the width and height as needed
+#                                 #     height=curr_height_pix,
+#                                 #     save_dir="online_images",
+#                                 #     image_name=f"image_{instr_idx}",
+#                                 #     access_key=access_key
+#                                 # )
+#                                 # if image_path:
+#                                 #     # Replace shape with the image
+#                                 #     shape.element.getparent().remove(shape.element)
+#                                 #     slide.shapes.add_picture(image_path, left, top, width, height)  # Adjust size and position
+#                                 # Fetch and insert image URL
+                                
+#                                 ## not using unsplash, instead using google images.
+#                                 print("new test@@@@@@2: ",new_text)
+#                                 image_url = fetch_image_urls(new_text)
+#                                 run = p.add_run()
+#                                 if image_url:
+#                                     run.text = image_url
+#                                     run.font.color.rgb = RGBColor(0, 0, 255)
+#                                     run.font.underline = True
+#                                 else:
+#                                     run.text = "Image not found"
+#                                     run.font.color.rgb = RGBColor(255, 0, 0)
+                                
+#                             else:
+#                                 run = p.add_run()
+#                                 run.text = new_text
+#                                 run.font.color.rgb = RGBColor(255, 255, 255)
+
+#                                 if curr == "title":
+#                                     run.font.bold = True
+#                                     run.font.size = Pt(40)
+#                                 elif curr == "stitle":
+#                                     run.font.size = Pt(25)
+#                                 else:
+#                                     run.font.size = Pt(16)
+
+#     # Save the updated presentation
+#     presentation.save(output_path)
+#     print(f"Updated PowerPoint file saved as '{output_path}'.")
+
+
+from pptx import Presentation
+from pptx.util import Pt
+from pptx.dml.color import RGBColor
+from pptx.enum.text import PP_ALIGN
+import textwrap
+
 def replace_placeholders_with_text(presentation_path, output_path, instructions, access_key):
-    # Load the PowerPoint presentation
     presentation = Presentation(presentation_path)
     instr_idx = 0
 
-    # Iterate over each slide in the presentation
     for slide in presentation.slides:
-        # Iterate over each shape in the slide
         for shape in slide.shapes:
             if shape.has_text_frame:
                 text_frame = shape.text_frame
-                left = shape.left
-                top = shape.top
-                width = shape.width
-                height = shape.height
-                # print("width: ", width,"; height: ", height)
+                left, top, width, height = shape.left, shape.top, shape.width, shape.height
 
                 for paragraph in text_frame.paragraphs:
                     curr = paragraph.text.strip()
                     if curr in ['img', 'title', 'txt', 'stitle']:
-                        # Clear existing text
-                        p = paragraph
-                        p.clear()
+                        paragraph.clear()
 
                         if instr_idx < len(instructions):
                             new_text = instructions[instr_idx].strip('"')
                             instr_idx += 1
 
                             if curr == "img":
-                                # curr_width_pix = emus_to_pixels(width)
-                                # curr_height_pix = emus_to_pixels(height)
-                                # # Fetch and insert the image
-                                # image_path = fetch_and_save_image(
-                                #     query=new_text,
-                                #     width=curr_width_pix,  # You can adjust the width and height as needed
-                                #     height=curr_height_pix,
-                                #     save_dir="online_images",
-                                #     image_name=f"image_{instr_idx}",
-                                #     access_key=access_key
-                                # )
-                                # if image_path:
-                                #     # Replace shape with the image
-                                #     shape.element.getparent().remove(shape.element)
-                                #     slide.shapes.add_picture(image_path, left, top, width, height)  # Adjust size and position
-                                # Fetch and insert image URL
-                                
-                                ## not using unsplash, instead using google images.
-                                print("new test@@@@@@2: ",new_text)
+                                # Image handling code remains the same
+                                print("new test@@@@@@2: ", new_text)
                                 image_url = fetch_image_urls(new_text)
-                                run = p.add_run()
+                                run = paragraph.add_run()
                                 if image_url:
                                     run.text = image_url
                                     run.font.color.rgb = RGBColor(0, 0, 255)
@@ -286,20 +342,37 @@ def replace_placeholders_with_text(presentation_path, output_path, instructions,
                                 else:
                                     run.text = "Image not found"
                                     run.font.color.rgb = RGBColor(255, 0, 0)
-                                
                             else:
-                                run = p.add_run()
-                                run.text = new_text
-                                run.font.color.rgb = RGBColor(255, 255, 255)
+                                # Handle formatted text
+                                lines = new_text.split('\n')
+                                for i, line in enumerate(lines):
+                                    if i > 0:
+                                        paragraph = text_frame.add_paragraph()
+                                    
+                                    if line.strip().startswith('•'):
+                                        paragraph.level = 1
+                                        line = line.strip()[1:].strip()
+                                    else:
+                                        paragraph.level = 0
 
-                                if curr == "title":
-                                    run.font.bold = True
-                                    run.font.size = Pt(40)
-                                elif curr == "stitle":
-                                    run.font.size = Pt(25)
-                                else:
-                                    run.font.size = Pt(16)
+                                    # Wrap text to fit within textbox width
+                                    wrapped_lines = textwrap.wrap(line, width=50)  # Adjust width as needed
+                                    for wrapped_line in wrapped_lines:
+                                        run = paragraph.add_run()
+                                        run.text = wrapped_line
+                                        run.font.color.rgb = RGBColor(255, 255, 255)
 
-    # Save the updated presentation
+                                        if curr == "title":
+                                            run.font.bold = True
+                                            run.font.size = Pt(40)
+                                        elif curr == "stitle":
+                                            run.font.size = Pt(25)
+                                        else:
+                                            run.font.size = Pt(16)
+
+                                # Set paragraph alignment
+                                for para in text_frame.paragraphs:
+                                    para.alignment = PP_ALIGN.LEFT
+
     presentation.save(output_path)
-    print(f"Updated PowerPoint file saved as '{output_path}'.")
+    print(f"Updated presentation saved as '{output_path}'.")

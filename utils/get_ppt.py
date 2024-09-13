@@ -214,9 +214,9 @@ def get_ppt():
             with open(prompt_file) as query_file:
                 query = query_file.read()
             
-
             fin_query = f"I need to create a presentation {add_to_prompt}. I need assistance in filling the placeholders in the given template which is in the form of a json. You need to only fill the 'instructions' section in each one in each slide. And return that json content only, so that I can put it directly in a json file. The presentation is based on the following content: {content}\n\nand the template you need to fill using the given above content is as follows, make sure that the word limit is taken care and keep it as short as possible, and also the content in each slide must be linked, and all slides must be linked, and all content must be related to the given content. Write the points in short and precise. Also forget the image placeholders in this template: {query}"
-            
+            # with open("kar.txt", 'w') as file:
+            #     file.write(fin_query)
             response = model.generate_content([fin_query], stream=True)
             response.resolve()
             output = preprocess_response(response.text)

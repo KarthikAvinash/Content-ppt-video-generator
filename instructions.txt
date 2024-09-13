@@ -1,23 +1,19 @@
-Introducing Meta Llama 3: The Most Capable Openly Available LLM to Date\n\nMeta Llama 3 is the next generation of our state-of-the-art open source large language model. It is now available on major cloud platforms and hardware platforms.\n\nWe are dedicated to developing Llama 3 responsibly and are introducing new trust and safety tools to help others use it responsibly as well. These tools include Llama Guard 2, Code Shield, and CyberSec Eval 2.\n\nIn the coming months, we expect to introduce new capabilities, longer context windows, additional model sizes, and enhanced performance, and we’ll share the Llama 3 research paper. 
-Llama 3:  A New Era of Open LLMs
-Llama 3 Architecture
-Llama 3:  The Evolution
-Building upon Llama 2
-Llama 3 builds upon the success of Llama 2, addressing developer feedback and enhancing its capabilities.
-Key improvements include: \n\n  Increased helpfulness:  Llama 3 aims to be even more helpful and responsive to user queries.\n  State-of-the-art performance: Llama 3 sets a new benchmark for LLMs at its size.\n  Responsible use: Meta prioritizes responsible development and deployment of Llama 3. 
-[Image of Llama 3 architecture]
-Llama 3:  A Community Effort
-Meta believes in an open approach to AI development.  Llama 3 is released under an open license, encouraging innovation and collaboration.
-Llama 3 Goals
-Meta's goals for Llama 3 are:\n\n  Build the best open LLMs:  To rival proprietary models in performance and capability.\n  Address developer feedback: To improve the overall helpfulness and usability of Llama 3.\n  Lead in responsible AI: To promote the ethical and safe use of LLMs. 
-Future of Llama 3
-Meta plans to expand Llama 3 in the future by adding:\n\n  Multilingual support\n  Multimodal capabilities\n  Longer context windows\n  Continual performance improvements  
-Llama 3 Architecture
-Key Design Components
-Decoder-Only Transformer Architecture
-Llama 3 utilizes a standard decoder-only transformer architecture with key improvements: \n\n  Larger Vocabulary: A 128K token vocabulary for more efficient language encoding.\n  Grouped Query Attention (GQA): Enhances inference efficiency across 8B and 70B models.\n  Longer Sequence Length: Trained on 8,192 tokens, enabling processing of larger inputs.
-Training Data
-Llama 3 is trained on a massive dataset of 15T tokens. This data includes:\n\n  Publicly Available Sources:  Diverse range of text and code.\n  Multilingual Data: Over 30 languages are included, supporting future multilingual use cases.\n  Rigorous Data Filtering:  Multiple pipelines ensure high-quality data.
-Scaling Up Pretraining
-To optimize training, Meta developed scaling laws to guide the training process. This included:\n\n  Data Mix Optimization: Selecting the best data mix for various use cases.\n  Efficient Compute Utilization:  Maximizing GPU uptime and reducing training time.\n  Predicting Performance:  Evaluating model performance on key tasks before training.
-[Image of a training cluster]
+This presentation is on Bajaj Allianz Health Guard Policy, a comprehensive health insurance plan that offers coverage for hospitalization expenses incurred due to illness or accident. It is designed to cater to your health care needs and provide financial security during medical emergencies.
+Bajaj Allianz Health Guard
+Health Insurance
+Overview
+Bajaj Allianz Health Guard Policy provides comprehensive coverage for hospitalization expenses arising from illness or accidental injuries. It offers various plans and sum insured options to suit your individual needs and budget. The policy includes benefits such as in-patient hospitalization, pre and post hospitalization, road ambulance, organ donor expenses, and more. It also provides coverage for maternity expenses, bariatric surgery, AYUSH treatment, and preventive health checkups.
+[Insert an image related to Health insurance]
+The policy also offers optional covers like air ambulance and voluntary aggregate deductible for additional protection. The premium rates vary based on factors like age, sum insured, and coverage zone.
+To purchase the policy, you need to fill a proposal form, undergo a medical examination (if required), and pay the premium. The policy provides a free look period and portability options. In case of a claim, you need to submit the necessary documents to the company for processing.
+Key Features
+Policy Purchase
+Benefits
+Plans
+The Health Guard Policy offers three plans: Silver, Gold, and Platinum. Each plan has different coverage options and sum insured limits.
+The Silver Plan provides basic coverage for in-patient hospitalization, road ambulance, and other essential benefits. The Gold Plan offers enhanced coverage for maternity expenses, bariatric surgery, and preventive health checkups. The Platinum Plan provides comprehensive coverage with additional benefits such as super cumulative bonus, recharge benefit, and air ambulance.
+The sum insured options vary for each plan, ranging from Rs. 1.5 Lacs to Rs. 1 Crore. You can choose the plan and sum insured that best suits your needs and financial capacity.
+[Insert an image of a table showing the different plans and their benefits]
+Plan Options
+Plan Coverage
+Sum Insured
