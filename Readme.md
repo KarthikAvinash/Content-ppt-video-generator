@@ -47,6 +47,8 @@ streamlit run app.py
     - "img" image - also the size of the text box will be the size of the image. (currently the images are from stock images, will convert this into google image links soon)
     - "points" *- will format the points as bullet points in a text box, but it is not yet implemented.
 
+- to limit the number of words to be filled for a text box containing a certain type ('txt', 'title', 'img', 'stitle') see the function "def create_prompt(slide_info):" in the file: "utils/ppt_util_functions.py", line - 67.
+
 
 - Make sure that there is a stable internet connection when running this application.
 - Avatar videos generation and overlaying code will be added soon...
