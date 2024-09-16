@@ -97,7 +97,7 @@ def create_prompt(slide_info):
             font_size = 12
             # estimated_words = estimate_word_count(width, height, font_path, font_size)
             # prompt_entry["estimated words"] = f"{estimated_words}"
-            prompt_entry["estimated words"] = f"15 (do not exceed this word limit)"
+            prompt_entry["estimated words"] = f"25 (do not exceed this word limit)"
             prompt_entry['instructions'] = f"[Write Text Here]"
         elif placeholder=="stitle":
             font_path = r'fonts/Arial.ttf'
